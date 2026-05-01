@@ -157,11 +157,11 @@ export default function Home() {
       <Navigation />
 
       {/* 1. Cinematic Hero - Perfect Viewport Fit */}
-      <section className="relative h-screen w-full h-[100dvh] bg-dark overflow-hidden flex flex-col justify-between p-12 md:p-20">
+      <section className="relative h-screen w-full h-[100dvh] bg-dark overflow-hidden flex flex-col justify-between p-8 sm:p-12 md:p-20">
         {/* Top Section - Headline */}
         <div className="relative z-10 flex justify-between items-start">
           <div className="max-w-xl animate-fade-in-up">
-            <p className="font-syncopate text-champagne tracking-[0.5em] text-[10px] uppercase mb-6 opacity-60">Est. 2052 • Broken City</p>
+            <p className="font-syncopate text-champagne tracking-[0.5em] text-[8px] sm:text-[10px] uppercase mb-4 sm:mb-6 opacity-60">Est. 2052 • Broken City</p>
             <h1 className="font-cormorant text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter leading-[0.85]">
               KING OF THE <br/>
               <span className="italic text-champagne">BROKEN CITY</span>
@@ -182,34 +182,34 @@ export default function Home() {
         </div>
 
         {/* Bottom Section - CTAs & Credits */}
-        <div className="relative z-10 flex flex-col md:flex-row justify-between items-end gap-12">
+        <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-10 md:gap-12 pb-4 sm:pb-0">
           {/* CTAs at Bottom Left */}
-          <div className="flex flex-col sm:flex-row gap-6 animate-fade-in-up [animation-delay:400ms]">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in-up [animation-delay:400ms] w-full sm:w-auto">
             <Link 
               href="#genesis" 
-              className="font-syncopate text-[9px] md:text-[10px] tracking-[0.4em] bg-champagne text-dark px-8 py-4 hover:bg-ivory transition-all duration-700 uppercase font-bold"
+              className="font-syncopate text-[9px] md:text-[10px] tracking-[0.4em] bg-champagne text-dark px-10 py-5 sm:px-8 sm:py-4 hover:bg-ivory transition-all duration-700 uppercase font-bold text-center"
             >
               Explore
             </Link>
             <Link 
               href="#movement" 
-              className="font-syncopate text-[9px] md:text-[10px] tracking-[0.4em] border border-white/20 text-ivory px-8 py-4 hover:bg-white/10 transition-all duration-700 uppercase"
+              className="font-syncopate text-[9px] md:text-[10px] tracking-[0.4em] border border-white/20 text-ivory px-10 py-5 sm:px-8 sm:py-4 hover:bg-white/10 transition-all duration-700 uppercase text-center"
             >
               Join
             </Link>
           </div>
 
-          <div className="max-w-xs text-right opacity-30">
-            <p className="font-inter text-[8px] md:text-[9px] tracking-widest leading-relaxed uppercase">
-              Designed by DigiMate Corp. • © 2052 Broken City
+          <div className="max-w-xs text-left md:text-right opacity-30">
+            <p className="font-inter text-[7px] sm:text-[9px] tracking-[0.2em] sm:tracking-widest leading-relaxed uppercase">
+              Designed by DigiMate Corp. <br className="sm:hidden"/> • © 2052 Broken City
             </p>
           </div>
         </div>
         
-        {/* Mobile Background Image */}
+        {/* Mobile Background Image - Optimized */}
         <div className="lg:hidden absolute inset-0 z-0">
-          <Image src="/assets/hero_v2.png" alt="Hero Bg" fill className="object-cover opacity-15 grayscale" />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark via-transparent to-dark"></div>
+          <Image src="/assets/hero_v2.png" alt="Hero Bg" fill className="object-cover opacity-25 grayscale brightness-50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-transparent to-dark"></div>
         </div>
       </section>
 
