@@ -242,99 +242,89 @@ export default function Home() {
       </section>
 
       {/* 3. The Cast (Bento Grid Redesign) */}
-      <section id="cast" className="py-40 bg-onyx relative border-y border-white/5">
+      <section id="cast" className="py-24 md:py-40 bg-onyx relative border-y border-white/5">
         <div className="max-w-[100rem] mx-auto px-6">
-          <div className="text-left mb-24 max-w-4xl">
-            <h2 className="font-syncopate text-champagne text-[10px] tracking-[0.5em] uppercase mb-8">Dramatis Personae</h2>
-            <p className="font-cormorant text-6xl md:text-8xl font-light tracking-tight">The Faces of <br/><span className="italic text-champagne">Broken City</span></p>
+          <div className="text-left mb-16 md:mb-24 max-w-4xl">
+            <h2 className="font-syncopate text-champagne text-[10px] tracking-[0.5em] uppercase mb-6 sm:mb-8">Dramatis Personae</h2>
+            <p className="font-cormorant text-5xl sm:text-7xl md:text-8xl font-light tracking-tight leading-[0.9]">
+              The Faces of <br/>
+              <span className="italic text-champagne">Broken City</span>
+            </p>
           </div>
 
-          {/* Bento Grid - Refined Sizing */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:grid-rows-2 h-auto md:h-[900px]">
-            {/* Box 1: Meanie (Large) */}
-            <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden cursor-pointer bg-dark border border-white/5 rounded-[2rem] p-6">
-              <div className="relative w-full h-full overflow-hidden rounded-[1.5rem]">
-                <div className="absolute inset-0 bg-dark z-10 opacity-30 group-hover:opacity-0 transition-opacity duration-[1500ms]"></div>
-                <Image 
-                  src="/images/hero.jpg" 
-                  alt="Meanie" 
-                  fill 
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms] ease-luxury scale-110 group-hover:scale-100" 
-                />
-              </div>
-              <div className="absolute bottom-12 left-12 z-20 transition-all duration-1000 group-hover:translate-x-4">
-                <h3 className="font-cormorant text-5xl md:text-7xl drop-shadow-2xl leading-none">Meanie</h3>
-                <p className="font-syncopate text-[9px] tracking-[0.4em] text-champagne mt-3 opacity-70 uppercase">Divine Retribution</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {/* Box 1: Meanie (Hero Box) */}
+            <div className="lg:col-span-2 lg:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-dark border border-white/5 aspect-square">
+              <Image 
+                src="/images/hero.jpg" 
+                alt="Meanie" 
+                fill 
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms] scale-100 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-1000"></div>
+              <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
+                <p className="font-syncopate text-champagne text-[8px] tracking-[0.4em] uppercase mb-4 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">Divine Retribution</p>
+                <h4 className="font-cormorant text-5xl md:text-7xl italic text-ivory tracking-tighter">Meanie</h4>
               </div>
             </div>
 
-            {/* Box 2: The Silence (Portrait) */}
-            <div className="md:col-span-2 md:row-span-1 relative group overflow-hidden cursor-pointer bg-dark border border-white/5 rounded-[2rem] p-6">
-              <div className="relative w-full h-full overflow-hidden rounded-[1.5rem]">
-                <div className="absolute inset-0 bg-dark z-10 opacity-40 group-hover:opacity-0 transition-opacity duration-[1500ms]"></div>
-                <Image 
-                  src="/images/genesis.jpg" 
-                  alt="The Silence" 
-                  fill 
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms] ease-luxury scale-105 group-hover:scale-100" 
-                />
-              </div>
-              <div className="absolute top-12 right-12 z-20 text-right transition-all duration-1000 group-hover:-translate-y-2">
-                <h3 className="font-cormorant text-4xl md:text-5xl drop-shadow-2xl leading-none">The Silence</h3>
-                <p className="font-syncopate text-[8px] tracking-[0.4em] text-champagne mt-3 opacity-70 uppercase">The Hitman</p>
+            {/* Box 2: The Silence */}
+            <div className="lg:col-span-2 relative group overflow-hidden rounded-[2rem] bg-dark border border-white/5 aspect-[16/9] lg:aspect-auto">
+              <Image 
+                src="/images/genesis.jpg" 
+                alt="The Silence" 
+                fill 
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+              />
+              <div className="absolute inset-0 bg-dark/40 group-hover:bg-transparent transition-colors duration-700"></div>
+              <div className="absolute bottom-8 left-8">
+                <p className="font-syncopate text-champagne text-[8px] tracking-[0.4em] uppercase mb-2 opacity-60">The Hitman</p>
+                <h4 className="font-cormorant text-4xl italic text-ivory tracking-tight">The Silence</h4>
               </div>
             </div>
 
-            {/* Box 3: Chronicles (Wide) */}
-            <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden cursor-pointer bg-dark border border-white/5 rounded-[1.5rem] p-4">
-              <div className="relative w-full h-full overflow-hidden rounded-[1rem]">
-                <div className="absolute inset-0 bg-dark z-10 opacity-50 group-hover:opacity-0 transition-opacity duration-[1500ms]"></div>
-                <Image 
-                  src="/images/chronicles.jpg" 
-                  alt="Chronicles" 
-                  fill 
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms] ease-luxury" 
-                />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center z-20">
-                <p className="font-syncopate text-[8px] tracking-[0.6em] text-ivory/40 uppercase group-hover:text-champagne transition-colors">The Archives</p>
+            {/* Box 3: Chronicles */}
+            <div className="relative group overflow-hidden rounded-[2rem] bg-dark border border-white/5 aspect-square">
+              <Image 
+                src="/images/chronicles.jpg" 
+                alt="Chronicles" 
+                fill 
+                className="object-cover opacity-30 group-hover:opacity-60 transition-all duration-1000"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <p className="font-syncopate text-[9px] tracking-[0.5em] text-ivory/40 uppercase group-hover:text-champagne transition-colors">Archives</p>
               </div>
             </div>
 
-            {/* Box 4: Merch/Detail (Square) */}
-            <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden cursor-pointer bg-dark border border-white/5 rounded-[1.5rem] p-4">
-              <div className="relative w-full h-full overflow-hidden rounded-[1rem]">
-                <div className="absolute inset-0 bg-dark z-10 opacity-60 group-hover:opacity-0 transition-opacity duration-[1500ms]"></div>
-                <Image 
-                  src="/images/shop.jpg" 
-                  alt="Merch" 
-                  fill 
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms] ease-luxury" 
-                />
-              </div>
-              <div className="absolute bottom-8 left-8 z-20">
-                <span className="font-syncopate text-[7px] tracking-[0.3em] text-champagne uppercase">Legacy Gear</span>
+            {/* Box 4: Merch */}
+            <div className="relative group overflow-hidden rounded-[2rem] bg-dark border border-white/5 aspect-square">
+              <Image 
+                src="/images/shop.jpg" 
+                alt="Shop" 
+                fill 
+                className="object-cover opacity-30 group-hover:opacity-60 transition-all duration-1000"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <p className="font-syncopate text-[9px] tracking-[0.5em] text-ivory/40 uppercase group-hover:text-champagne transition-colors">Covenant Gear</p>
               </div>
             </div>
           </div>
 
-          {/* The Bullies Section */}
-          <div className="mt-40 pt-20 border-t border-white/5">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
-              <h3 className="font-cormorant text-6xl md:text-7xl font-light tracking-tight">The <span className="italic text-champagne">Enforcers</span></h3>
-              <p className="font-inter font-light text-ivory/40 max-w-sm text-sm tracking-wide">The secondary shadows that loom over Broken City, enforcing the will of the corporate gods.</p>
+          {/* Secondary Cast: The Enforcers */}
+          <div className="mt-32 md:mt-40 pt-20 border-t border-white/5">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8">
+              <h3 className="font-cormorant text-5xl md:text-7xl font-light tracking-tight">The <span className="italic text-champagne">Enforcers</span></h3>
+              <p className="font-inter font-light text-ivory/40 max-w-sm text-sm tracking-wide leading-relaxed">The secondary shadows that loom over Broken City, enforcing the will of the corporate gods.</p>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {bullies.map((bully, i) => (
-                <div key={bully.name} className="group cursor-pointer relative">
-                  <div className="relative aspect-square overflow-hidden mb-6 rounded-2xl">
-                    <div className="absolute inset-0 bg-dark z-10 opacity-60 group-hover:opacity-0 transition-opacity duration-[1500ms] mix-blend-multiply"></div>
-                    <Image src={bully.image} alt={bully.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms] ease-luxury" />
-                    <div className="absolute top-4 left-4 z-20">
-                      <span className="font-syncopate text-[8px] text-champagne/40 tracking-[0.3em]">UNIT 0{i+1}</span>
-                    </div>
+                <div key={bully.name} className="group relative aspect-square overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border border-white/5 bg-dark">
+                  <Image src={bully.image} alt={bully.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
+                  <div className="absolute inset-0 bg-dark/60 group-hover:bg-dark/20 transition-all duration-700"></div>
+                  <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8">
+                    <span className="font-syncopate text-[7px] text-champagne/40 tracking-[0.3em] block mb-2 uppercase">Unit 0{i+1}</span>
+                    <h5 className="font-cormorant text-xl md:text-3xl text-ivory/80 group-hover:text-champagne transition-colors">{bully.name}</h5>
                   </div>
-                  <h4 className="font-cormorant text-2xl group-hover:text-champagne transition-colors duration-700 tracking-tight">{bully.name}</h4>
                 </div>
               ))}
             </div>
