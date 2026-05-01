@@ -41,32 +41,34 @@ function Navigation({ mobileMenuOpen, setMobileMenuOpen }: { mobileMenuOpen: boo
   }, []);
 
   return (
-    <nav className={`fixed top-8 left-1/2 -translate-x-1/2 z-[100] transition-all duration-700 w-[92%] max-w-5xl`}>
-      <div className={`flex justify-between items-center pl-8 pr-4 py-3 rounded-full border border-white/10 backdrop-blur-3xl transition-all duration-700 ${scrolled ? "bg-dark/90 shadow-[0_20px_60px_rgba(0,0,0,0.6)]" : "bg-dark/50"}`}>
-        <Link href="/" className="font-syncopate tracking-[0.4em] text-champagne text-[10px] sm:text-xs uppercase group cursor-pointer z-50">
-          John <span className="text-ivory group-hover:text-champagne transition-colors duration-500 font-bold">X</span>
-        </Link>
-        
-        <div className="flex items-center gap-2 sm:gap-6">
-          <Link href="/shop/tshirts" className={`font-syncopate text-[8px] tracking-[0.2em] transition-colors uppercase pr-4 border-r ${mobileMenuOpen ? "text-black/60 border-black/10 hover:text-black" : "text-ivory/60 border-white/10 hover:text-champagne"}`}>SHOP</Link>
+    <nav className="fixed top-0 left-0 w-full h-0 z-[100]">
+      {/* Pill Container */}
+      <div className={`fixed top-8 left-1/2 -translate-x-1/2 transition-all duration-700 w-[92%] max-w-5xl z-[110]`}>
+        <div className={`flex justify-between items-center pl-8 pr-4 py-3 rounded-full border border-white/20 backdrop-blur-3xl transition-all duration-700 ${scrolled ? "bg-dark/95 shadow-[0_20px_60px_rgba(0,0,0,0.8)]" : "bg-dark/90"}`}>
+          <Link href="/" className="font-syncopate tracking-[0.4em] text-champagne text-[10px] sm:text-xs uppercase group cursor-pointer">
+            John <span className="text-white group-hover:text-champagne transition-colors duration-500 font-bold">X</span>
+          </Link>
           
-          {/* Hamburger Toggle at the far right */}
-          <button 
-            className="z-50 p-3 group relative"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            <div className="w-6 h-3.5 flex flex-col justify-between items-end">
-              <span className={`h-0.5 transition-all duration-500 ${mobileMenuOpen ? "w-6 rotate-45 translate-y-1.5 bg-black" : "w-6 group-hover:w-4 bg-ivory"}`}></span>
-              <span className={`h-0.5 transition-all duration-500 ${mobileMenuOpen ? "opacity-0 bg-black" : "w-6 bg-ivory"}`}></span>
-              <span className={`h-0.5 transition-all duration-500 ${mobileMenuOpen ? "w-6 -rotate-45 -translate-y-1.5 bg-black" : "w-6 group-hover:w-5 bg-ivory"}`}></span>
-            </div>
-          </button>
+          <div className="flex items-center gap-2 sm:gap-6">
+            <Link href="/shop/tshirts" className={`font-syncopate text-[8px] tracking-[0.2em] transition-colors uppercase pr-4 border-r ${mobileMenuOpen ? "text-black/60 border-black/10 hover:text-black" : "text-white/60 border-white/10 hover:text-white"}`}>SHOP</Link>
+            
+            <button 
+              className="p-3 group relative"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle Menu"
+            >
+              <div className="w-6 h-4 flex flex-col justify-between items-end">
+                <span className={`h-[3px] transition-all duration-500 ${mobileMenuOpen ? "w-6 rotate-45 translate-y-2 bg-black" : "w-6 group-hover:w-4 bg-white shadow-[0_0_10px_rgba(255,255,255,0.3)]"}`}></span>
+                <span className={`h-[3px] transition-all duration-500 ${mobileMenuOpen ? "opacity-0 bg-black" : "w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.3)]"}`}></span>
+                <span className={`h-[3px] transition-all duration-500 ${mobileMenuOpen ? "w-6 -rotate-45 -translate-y-2 bg-black" : "w-6 group-hover:w-5 bg-white shadow-[0_0_10px_rgba(255,255,255,0.3)]"}`}></span>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay - High Contrast White */}
-      <div className={`fixed inset-0 bg-white z-[90] transition-all duration-1000 ease-luxury md:hidden flex flex-col ${mobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
+      {/* Mobile Menu Overlay - High Contrast White (True Fullscreen) */}
+      <div className={`fixed inset-0 bg-white z-[100] transition-all duration-1000 ease-luxury flex flex-col ${mobileMenuOpen ? "translate-y-0 opacity-100 pointer-events-auto" : "-translate-y-full opacity-0 pointer-events-none"}`}>
         <div className="flex flex-col items-center justify-center h-full gap-8 text-center p-12">
           <span className="font-syncopate tracking-[0.8em] text-[8px] uppercase text-black/20 mb-12">Project John X</span>
           
