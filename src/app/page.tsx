@@ -41,21 +41,22 @@ function Navigation({ mobileMenuOpen, setMobileMenuOpen }: { mobileMenuOpen: boo
   }, []);
 
   return (
-    <nav className={`fixed top-8 left-1/2 -translate-x-1/2 z-[100] transition-all duration-700 w-[90%] max-w-4xl`}>
-      <div className={`flex justify-between items-center px-8 py-4 rounded-full border border-white/10 backdrop-blur-2xl transition-all duration-700 ${scrolled ? "bg-dark/80 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" : "bg-dark/40"}`}>
-        <Link href="/" className="font-syncopate tracking-[0.3em] text-champagne text-xs uppercase group cursor-pointer z-50">
-          John <span className="text-ivory group-hover:text-champagne transition-colors duration-500">X</span>
+    <nav className={`fixed top-8 left-1/2 -translate-x-1/2 z-[100] transition-all duration-700 w-[92%] max-w-5xl`}>
+      <div className={`flex justify-between items-center pl-8 pr-4 py-3 rounded-full border border-white/10 backdrop-blur-3xl transition-all duration-700 ${scrolled ? "bg-dark/90 shadow-[0_20px_60px_rgba(0,0,0,0.6)]" : "bg-dark/50"}`}>
+        <Link href="/" className="font-syncopate tracking-[0.4em] text-champagne text-[10px] sm:text-xs uppercase group cursor-pointer z-50">
+          John <span className="text-ivory group-hover:text-champagne transition-colors duration-500 font-bold">X</span>
         </Link>
         
-        <div className="flex items-center gap-6">
-          <Link href="/shop/tshirts" className="font-syncopate text-[8px] tracking-[0.2em] text-ivory/40 hover:text-champagne transition-colors">SHOP</Link>
+        <div className="flex items-center gap-2 sm:gap-6">
+          <Link href="/shop/tshirts" className="font-syncopate text-[8px] tracking-[0.2em] text-ivory/60 hover:text-champagne transition-colors uppercase pr-4 border-r border-white/10">SHOP</Link>
           
-          {/* Hamburger Toggle */}
+          {/* Hamburger Toggle at the far right */}
           <button 
-            className="text-ivory z-50 p-2 group"
+            className="text-ivory z-50 p-3 group relative"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
           >
-            <div className="w-6 h-4 flex flex-col justify-between items-end">
+            <div className="w-6 h-3.5 flex flex-col justify-between items-end">
               <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 rotate-45 translate-y-1.5" : "w-6 group-hover:w-4"}`}></span>
               <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "opacity-0" : "w-6"}`}></span>
               <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 -rotate-45 -translate-y-1.5" : "w-6 group-hover:w-5"}`}></span>
@@ -70,15 +71,20 @@ function Navigation({ mobileMenuOpen, setMobileMenuOpen }: { mobileMenuOpen: boo
           <span className="font-syncopate tracking-[0.8em] text-[8px] uppercase opacity-20 mb-12">Project John X</span>
           
           <div className="flex flex-col gap-6">
-            {["genesis", "cast", "symphony", "movement"].map((item, index) => (
+            {[
+              { id: "genesis", label: "The Genesis" },
+              { id: "cast", label: "The Cast" },
+              { id: "symphony", label: "The Manifesto" },
+              { id: "movement", label: "The Movement" }
+            ].map((item, index) => (
               <Link 
-                key={item} 
-                href={`#${item}`} 
-                className={`font-cormorant text-5xl sm:text-6xl italic transition-all duration-700 ${mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+                key={item.id} 
+                href={`#${item.id}`} 
+                className={`font-cormorant text-5xl sm:text-6xl italic transition-all duration-700 hover:text-champagne ${mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
                 style={{ transitionDelay: `${index * 100}ms` }}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </div>
@@ -86,7 +92,7 @@ function Navigation({ mobileMenuOpen, setMobileMenuOpen }: { mobileMenuOpen: boo
           <div className="w-24 h-px bg-white/10 my-12"></div>
           
           <div className={`flex flex-col gap-8 transition-all duration-1000 delay-500 ${mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
-            <Link href="/shop/mp3" className="font-syncopate text-xs tracking-[0.4em] text-champagne uppercase" onClick={() => setMobileMenuOpen(false)}>Buy MP3 archive</Link>
+            <Link href="/shop/mp3" className="font-syncopate text-xs tracking-[0.4em] text-champagne uppercase" onClick={() => setMobileMenuOpen(false)}>Sonic Archives</Link>
             <Link href="/shop/tshirts" className="font-syncopate text-xs tracking-[0.4em] text-champagne uppercase" onClick={() => setMobileMenuOpen(false)}>Wearable Covenant</Link>
           </div>
 
