@@ -8,12 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: '#000000',
-        onyx: '#FFFFFF',
+        dark: '#1A1A1A',
+        onyx: '#F9F9F9',
         ivory: '#FFFFFF',
-        champagne: '#B8860B', // Standard gold for better visibility
+        champagne: '#B8860B',
         brass: '#D4AF37',
-        charcoal: '#000000',
+        charcoal: '#2D2D2D',
       },
       fontFamily: {
         cormorant: ['var(--font-cormorant)', 'serif'],

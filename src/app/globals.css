@@ -2,7 +2,7 @@
 
 @theme inline {
   --color-background: #FFFFFF;
-  --color-foreground: #000000;
+  --color-foreground: #1A1A1A;
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -51,7 +51,7 @@
 
   body {
     background-color: #FFFFFF;
-    color: #000000;
+    color: #1A1A1A;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     @apply bg-background text-foreground;
