@@ -8,12 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: '#1A1A1A',
-        onyx: '#F9F9F9',
-        ivory: '#FFFFFF',
-        champagne: '#B8860B',
-        brass: '#D4AF37',
-        charcoal: '#2D2D2D',
+        dark: '#0A0A0A',
+        onyx: '#141414',
+        ivory: '#F8F5F0',
+        champagne: '#D4AF37',
+        brass: '#B5A642',
+        charcoal: '#1C1C1C',
       },
       fontFamily: {
         cormorant: ['var(--font-cormorant)', 'serif'],
@@ -26,7 +26,6 @@ module.exports = {
         'fade-in-slow': 'fadeIn 2s ease-out forwards',
         'fade-in-up': 'fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'image-pan': 'imagePan 20s linear infinite alternate',
-        'scale-x': 'scaleX 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
         fadeIn: {
@@ -40,10 +39,6 @@ module.exports = {
         imagePan: {
           '0%': { transform: 'scale(1.05) translate(0, 0)' },
           '100%': { transform: 'scale(1.1) translate(-2%, -2%)' },
-        },
-        scaleX: {
-          '0%': { transform: 'scaleX(0)' },
-          '100%': { transform: 'scaleX(1)' },
         }
       },
       transitionTimingFunction: {

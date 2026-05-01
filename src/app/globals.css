@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #FFFFFF;
-  --color-foreground: #1A1A1A;
+  --color-background: #0A0A0A;
+  --color-foreground: #F8F5F0;
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -50,8 +50,8 @@
   }
 
   body {
-    background-color: #FFFFFF;
-    color: #1A1A1A;
+    background-color: #0A0A0A;
+    color: #F8F5F0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     @apply bg-background text-foreground;
