@@ -30,12 +30,12 @@ export default function Mp3Page() {
 
       <div className="max-w-5xl mx-auto px-6 pt-48 pb-40">
         {/* Simple Header */}
-        <header className="mb-32">
-          <span className="font-syncopate tracking-[0.8em] text-[10px] uppercase opacity-30 mb-8 block">Project John X</span>
-          <h1 className="font-cormorant text-7xl md:text-9xl leading-[0.85] tracking-tighter mb-12">
+        <header className="mb-20 md:mb-32">
+          <span className="font-syncopate tracking-[0.8em] text-[8px] sm:text-[10px] uppercase opacity-30 mb-8 block">Project John X</span>
+          <h1 className="font-cormorant text-5xl sm:text-7xl md:text-9xl leading-[0.85] tracking-tighter mb-8 md:mb-12">
             The Sonic <br/><span className="italic">Manifesto</span>
           </h1>
-          <p className="font-inter text-xl md:text-2xl font-light leading-relaxed max-w-2xl opacity-60">
+          <p className="font-inter text-lg md:text-2xl font-light leading-relaxed max-w-2xl opacity-60">
             Original motion picture soundtrack. A high-fidelity digital archive of the sounds that defined Broken City.
           </p>
         </header>
@@ -58,19 +58,19 @@ export default function Mp3Page() {
             </div>
           </div>
 
-          <div className="lg:sticky lg:top-40 bg-black text-white p-12 md:p-16 rounded-[2.5rem] shadow-2xl">
-            <div className="mb-12">
-              <p className="font-syncopate text-[9px] tracking-[0.5em] opacity-40 mb-4 uppercase">Direct Download</p>
-              <h3 className="font-cormorant text-5xl italic mb-2">Digital Master</h3>
-              <p className="font-inter text-xs opacity-50 tracking-widest">320KBPS / 24-BIT HI-RES</p>
+          <div className="lg:sticky lg:top-40 bg-black text-white p-8 md:p-16 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl">
+            <div className="mb-8 md:mb-12">
+              <p className="font-syncopate text-[8px] sm:text-[9px] tracking-[0.5em] opacity-40 mb-4 uppercase">Direct Download</p>
+              <h3 className="font-cormorant text-4xl md:text-5xl italic mb-2">Digital Master</h3>
+              <p className="font-inter text-[9px] sm:text-xs opacity-50 tracking-widest">320KBPS / 24-BIT HI-RES</p>
             </div>
             
-            <div className="flex justify-between items-end mb-12">
-               <p className="font-syncopate text-4xl">R180</p>
-               <p className="font-inter text-[10px] opacity-40 uppercase">Inc. VAT</p>
+            <div className="flex justify-between items-end mb-8 md:mb-12">
+               <p className="font-syncopate text-3xl md:text-4xl">R180</p>
+               <p className="font-inter text-[8px] md:text-[10px] opacity-40 uppercase">Inc. VAT</p>
             </div>
 
-            <button className="w-full bg-white text-black font-syncopate text-xs tracking-[0.4em] py-6 uppercase font-bold hover:bg-champagne transition-all duration-700">
+            <button className="w-full bg-white text-black font-syncopate text-[10px] sm:text-xs tracking-[0.4em] py-5 md:py-6 uppercase font-bold hover:bg-champagne transition-all duration-700">
               Purchase Now
             </button>
             

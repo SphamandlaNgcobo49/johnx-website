@@ -33,6 +33,7 @@ const formSchema = z.object({
 
 function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -43,9 +44,11 @@ function Navigation() {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-luxury ${scrolled ? "bg-dark/95 backdrop-blur-xl py-4 border-b border-white/5" : "bg-transparent py-8"}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <span className="font-syncopate tracking-[0.3em] text-champagne text-sm uppercase group cursor-pointer">
+        <Link href="/" className="font-syncopate tracking-[0.3em] text-champagne text-sm uppercase group cursor-pointer z-50">
           John <span className="text-ivory group-hover:text-champagne transition-colors duration-500">X</span>
-        </span>
+        </Link>
+        
+        {/* Desktop Links */}
         <div className="hidden md:flex gap-12 text-[10px] uppercase tracking-[0.3em] font-inter text-ivory/50">
           {["genesis", "cast", "symphony", "movement"].map((item) => (
             <Link key={item} href={`#${item}`} className="hover:text-champagne transition-all duration-500 relative group">
@@ -54,6 +57,7 @@ function Navigation() {
             </Link>
           ))}
         </div>
+
         <div className="flex items-center gap-6">
           <div className="relative group">
             <button className="hidden sm:block font-syncopate text-[9px] tracking-[0.2em] border border-champagne/30 px-6 py-2 group-hover:bg-champagne group-hover:text-dark transition-all duration-700">
@@ -71,9 +75,37 @@ function Navigation() {
               </div>
             </div>
           </div>
-          <button className="text-ivory md:hidden">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1} d="M4 6h16M4 12h16M4 18h16" /></svg>
+          
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="text-ivory md:hidden z-50 p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <div className="w-6 h-5 flex flex-col justify-between items-end">
+              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 rotate-45 translate-y-2" : "w-6"}`}></span>
+              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "opacity-0" : "w-4"}`}></span>
+              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 -rotate-45 -translate-y-2" : "w-5"}`}></span>
+            </div>
           </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 bg-dark z-40 transition-all duration-700 ease-luxury md:hidden ${mobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}>
+        <div className="flex flex-col items-center justify-center h-full gap-12 text-center p-12">
+          {["genesis", "cast", "symphony", "movement"].map((item) => (
+            <Link 
+              key={item} 
+              href={`#${item}`} 
+              className="font-cormorant text-5xl italic hover:text-champagne transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {item}
+            </Link>
+          ))}
+          <div className="w-12 h-px bg-white/10 my-4"></div>
+          <Link href="/shop/mp3" className="font-syncopate text-xs tracking-widest text-champagne" onClick={() => setMobileMenuOpen(false)}>Buy MP3</Link>
+          <Link href="/shop/tshirts" className="font-syncopate text-xs tracking-widest text-champagne" onClick={() => setMobileMenuOpen(false)}>T-Shirts</Link>
         </div>
       </div>
     </nav>
@@ -130,7 +162,7 @@ export default function Home() {
         <div className="relative z-10 flex justify-between items-start">
           <div className="max-w-xl animate-fade-in-up">
             <p className="font-syncopate text-champagne tracking-[0.5em] text-[10px] uppercase mb-6 opacity-60">Est. 2052 • Broken City</p>
-            <h1 className="font-cormorant text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter leading-[0.85]">
+            <h1 className="font-cormorant text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter leading-[0.85]">
               KING OF THE <br/>
               <span className="italic text-champagne">BROKEN CITY</span>
             </h1>
@@ -367,17 +399,17 @@ export default function Home() {
       </section>
 
       {/* 5. The Movement (Social Upliftment) - Plain White & Bold */}
-      <section id="movement" className="py-60 bg-white text-black relative overflow-hidden">
+      <section id="movement" className="py-24 md:py-60 bg-white text-black relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
-          <span className="font-syncopate tracking-[0.6em] text-xs uppercase mb-12 block text-black/40">Social Impact</span>
-          <h2 className="font-cormorant text-7xl md:text-[10rem] leading-[0.85] font-light mb-20 tracking-tighter text-black">
+          <span className="font-syncopate tracking-[0.6em] text-[10px] sm:text-xs uppercase mb-12 block text-black/40">Social Impact</span>
+          <h2 className="font-cormorant text-5xl sm:text-7xl md:text-[10rem] leading-[0.85] font-light mb-12 md:mb-20 tracking-tighter text-black">
             Art as a <br/><span className="italic text-champagne drop-shadow-sm">Sacrament</span> of <span className="italic">Change</span>
           </h2>
-          <div className="w-[1px] h-40 bg-black/10 mx-auto mb-20"></div>
-          <p className="font-inter text-2xl md:text-4xl font-light text-black/80 leading-relaxed max-w-4xl mx-auto italic">
+          <div className="w-[1px] h-20 md:h-40 bg-black/10 mx-auto mb-12 md:mb-20"></div>
+          <p className="font-inter text-lg sm:text-2xl md:text-4xl font-light text-black/80 leading-relaxed max-w-4xl mx-auto italic">
             &quot;John X is more than a narrative. It is a covenant.&quot;
           </p>
-          <p className="font-inter text-xl md:text-2xl font-light text-black/50 leading-relaxed max-w-3xl mx-auto mt-16">
+          <p className="font-inter text-base sm:text-xl md:text-2xl font-light text-black/50 leading-relaxed max-w-3xl mx-auto mt-10 md:mt-16">
             A non-negotiable term of this project is to allocate a percentage of ALL net profits to fund social upliftment and provide employment for the next generation of visionaries in Broken City.
           </p>
           

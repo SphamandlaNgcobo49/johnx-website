@@ -74,10 +74,10 @@ export default function TShirtsPage() {
       </nav>
 
       {/* Header */}
-      <section className="pt-40 pb-20 px-6 text-center">
-        <span className="font-syncopate tracking-[0.6em] text-[10px] uppercase text-champagne/60 block mb-6">Archive Collection</span>
-        <h1 className="font-cormorant text-6xl md:text-8xl italic tracking-tighter mb-4">The Wearable <br/>Covenant</h1>
-        <p className="font-inter text-ivory/40 text-sm tracking-widest uppercase">Broken City Supply Division</p>
+      <section className="pt-32 md:pt-40 pb-12 md:pb-20 px-6 text-center">
+        <span className="font-syncopate tracking-[0.6em] text-[8px] sm:text-[10px] uppercase text-champagne/60 block mb-6">Archive Collection</span>
+        <h1 className="font-cormorant text-5xl md:text-8xl italic tracking-tighter mb-4">The Wearable <br/>Covenant</h1>
+        <p className="font-inter text-ivory/40 text-[10px] sm:text-sm tracking-widest uppercase">Broken City Supply Division</p>
       </section>
 
       {/* Product Grid */}
