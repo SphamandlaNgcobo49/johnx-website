@@ -31,9 +31,8 @@ const formSchema = z.object({
   message: z.string().optional(),
 });
 
-function Navigation() {
+function Navigation({ mobileMenuOpen, setMobileMenuOpen }: { mobileMenuOpen: boolean, setMobileMenuOpen: (o: boolean) => void }) {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -42,70 +41,60 @@ function Navigation() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-luxury ${scrolled ? "bg-dark/95 backdrop-blur-xl py-4 border-b border-white/5" : "bg-transparent py-8"}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="font-syncopate tracking-[0.3em] text-champagne text-sm uppercase group cursor-pointer z-50">
+    <nav className={`fixed top-8 left-1/2 -translate-x-1/2 z-[100] transition-all duration-700 w-[90%] max-w-4xl`}>
+      <div className={`flex justify-between items-center px-8 py-4 rounded-full border border-white/10 backdrop-blur-2xl transition-all duration-700 ${scrolled ? "bg-dark/80 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" : "bg-dark/40"}`}>
+        <Link href="/" className="font-syncopate tracking-[0.3em] text-champagne text-xs uppercase group cursor-pointer z-50">
           John <span className="text-ivory group-hover:text-champagne transition-colors duration-500">X</span>
         </Link>
         
-        {/* Desktop Links */}
-        <div className="hidden md:flex gap-12 text-[10px] uppercase tracking-[0.3em] font-inter text-ivory/50">
-          {["genesis", "cast", "symphony", "movement"].map((item) => (
-            <Link key={item} href={`#${item}`} className="hover:text-champagne transition-all duration-500 relative group">
-              {item}
-              <span className="absolute -bottom-2 left-0 w-0 h-px bg-champagne transition-all duration-500 group-hover:w-full"></span>
-            </Link>
-          ))}
-        </div>
-
         <div className="flex items-center gap-6">
-          <div className="relative group">
-            <button className="hidden sm:block font-syncopate text-[9px] tracking-[0.2em] border border-champagne/30 px-6 py-2 group-hover:bg-champagne group-hover:text-dark transition-all duration-700">
-              SHOP NOW
-            </button>
-            {/* Dropdown Menu */}
-            <div className="absolute top-full right-0 mt-4 w-48 bg-dark/95 backdrop-blur-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 transform translate-y-2 group-hover:translate-y-0 py-4 px-6 shadow-2xl rounded-xl">
-              <div className="flex flex-col gap-4">
-                <Link href="/shop/mp3" className="font-syncopate text-[8px] tracking-widest text-ivory/60 hover:text-champagne transition-colors uppercase whitespace-nowrap">
-                  Buy our Mp3
-                </Link>
-                <Link href="/shop/tshirts" className="font-syncopate text-[8px] tracking-widest text-ivory/60 hover:text-champagne transition-colors uppercase whitespace-nowrap">
-                  Buy our T-Shirts
-                </Link>
-              </div>
-            </div>
-          </div>
+          <Link href="/shop/tshirts" className="font-syncopate text-[8px] tracking-[0.2em] text-ivory/40 hover:text-champagne transition-colors">SHOP</Link>
           
-          {/* Mobile Menu Toggle */}
+          {/* Hamburger Toggle */}
           <button 
-            className="text-ivory md:hidden z-50 p-2"
+            className="text-ivory z-50 p-2 group"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <div className="w-6 h-5 flex flex-col justify-between items-end">
-              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 rotate-45 translate-y-2" : "w-6"}`}></span>
-              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "opacity-0" : "w-4"}`}></span>
-              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 -rotate-45 -translate-y-2" : "w-5"}`}></span>
+            <div className="w-6 h-4 flex flex-col justify-between items-end">
+              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 rotate-45 translate-y-1.5" : "w-6 group-hover:w-4"}`}></span>
+              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "opacity-0" : "w-6"}`}></span>
+              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 -rotate-45 -translate-y-1.5" : "w-6 group-hover:w-5"}`}></span>
             </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-dark z-40 transition-all duration-700 ease-luxury md:hidden ${mobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}>
-        <div className="flex flex-col items-center justify-center h-full gap-12 text-center p-12">
-          {["genesis", "cast", "symphony", "movement"].map((item) => (
-            <Link 
-              key={item} 
-              href={`#${item}`} 
-              className="font-cormorant text-5xl italic hover:text-champagne transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {item}
-            </Link>
-          ))}
-          <div className="w-12 h-px bg-white/10 my-4"></div>
-          <Link href="/shop/mp3" className="font-syncopate text-xs tracking-widest text-champagne" onClick={() => setMobileMenuOpen(false)}>Buy MP3</Link>
-          <Link href="/shop/tshirts" className="font-syncopate text-xs tracking-widest text-champagne" onClick={() => setMobileMenuOpen(false)}>T-Shirts</Link>
+      {/* Mobile Menu Overlay - Fullscreen Immersive */}
+      <div className={`fixed inset-0 bg-dark z-[90] transition-all duration-1000 ease-luxury md:hidden flex flex-col ${mobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
+        <div className="flex flex-col items-center justify-center h-full gap-8 text-center p-12">
+          <span className="font-syncopate tracking-[0.8em] text-[8px] uppercase opacity-20 mb-12">Project John X</span>
+          
+          <div className="flex flex-col gap-6">
+            {["genesis", "cast", "symphony", "movement"].map((item, index) => (
+              <Link 
+                key={item} 
+                href={`#${item}`} 
+                className={`font-cormorant text-5xl sm:text-6xl italic transition-all duration-700 ${mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item}
+              </Link>
+            ))}
+          </div>
+
+          <div className="w-24 h-px bg-white/10 my-12"></div>
+          
+          <div className={`flex flex-col gap-8 transition-all duration-1000 delay-500 ${mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
+            <Link href="/shop/mp3" className="font-syncopate text-xs tracking-[0.4em] text-champagne uppercase" onClick={() => setMobileMenuOpen(false)}>Buy MP3 archive</Link>
+            <Link href="/shop/tshirts" className="font-syncopate text-xs tracking-[0.4em] text-champagne uppercase" onClick={() => setMobileMenuOpen(false)}>Wearable Covenant</Link>
+          </div>
+
+          <div className="absolute bottom-20 flex gap-8 opacity-20 font-syncopate text-[8px] tracking-widest uppercase">
+             <span>Instagram</span>
+             <span>Twitter</span>
+             <span>Contact</span>
+          </div>
         </div>
       </div>
     </nav>
@@ -115,6 +104,7 @@ function Navigation() {
 export default function Home() {
   const submitContact = useMutation(api.contacts.submitContact);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -154,36 +144,33 @@ export default function Home() {
 
   return (
     <main className="bg-dark text-ivory min-h-screen selection:bg-champagne selection:text-dark overflow-x-hidden">
-      <Navigation />
+      <Navigation mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
 
-      {/* 1. Cinematic Hero - Perfect Viewport Fit */}
-      <section className="relative h-screen w-full h-[100dvh] bg-dark overflow-hidden flex flex-col justify-between p-8 sm:p-12 md:p-20">
-        {/* Top Section - Headline */}
-        <div className="relative z-10 flex justify-between items-start">
-          <div className="max-w-xl animate-fade-in-up">
-            <p className="font-syncopate text-champagne tracking-[0.5em] text-[8px] sm:text-[10px] uppercase mb-4 sm:mb-6 opacity-60">Est. 2052 • Broken City</p>
-            <h1 className="font-cormorant text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter leading-[0.85]">
-              KING OF THE <br/>
-              <span className="italic text-champagne">BROKEN CITY</span>
-            </h1>
-          </div>
-          
-          {/* Hero Image - Shifted down 1cm without overflow */}
-          <div className="hidden lg:block relative w-[45%] h-[70vh] group overflow-hidden rounded-[2rem] translate-y-10 self-start">
-             <div className="absolute inset-0 border border-white/10 m-8 z-20 pointer-events-none group-hover:m-4 transition-all duration-1000 rounded-[1.5rem]"></div>
-             <Image 
-                src="/assets/hero_v2.png" 
-                alt="John X Hero" 
-                fill 
-                className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-1000 grayscale hover:grayscale-0"
-                priority
-             />
-          </div>
+      {/* 1. Cinematic Hero - Vertical Stack on Mobile */}
+      <section className="relative min-h-screen w-full bg-dark overflow-hidden flex flex-col p-8 sm:p-12 md:p-20 pt-32 sm:pt-40">
+        {/* Top: Headline */}
+        <div className="relative z-10 w-full animate-fade-in-up mb-12">
+          <p className="font-syncopate text-champagne tracking-[0.5em] text-[8px] sm:text-[10px] uppercase mb-4 sm:mb-6 opacity-60">Est. 2052 • Broken City</p>
+          <h1 className="font-cormorant text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-tighter leading-[0.85]">
+            KING OF THE <br/>
+            <span className="italic text-champagne">BROKEN CITY</span>
+          </h1>
+        </div>
+        
+        {/* Middle: Image */}
+        <div className="relative z-10 w-full lg:w-[45%] h-[45vh] sm:h-[55vh] lg:h-[70vh] mb-12 lg:mb-0 lg:absolute lg:top-40 lg:right-20 group overflow-hidden rounded-[2rem] lg:translate-y-10">
+           <div className="absolute inset-0 border border-white/10 m-4 sm:m-8 z-20 pointer-events-none group-hover:m-4 transition-all duration-1000 rounded-[1.5rem]"></div>
+           <Image 
+              src="/assets/hero_v2.png" 
+              alt="John X Hero" 
+              fill 
+              className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-1000 grayscale hover:grayscale-0"
+              priority
+           />
         </div>
 
-        {/* Bottom Section - CTAs & Credits */}
-        <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-10 md:gap-12 pb-4 sm:pb-0">
-          {/* CTAs at Bottom Left */}
+        {/* Bottom: CTAs */}
+        <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-10 md:gap-12 mt-auto pb-4 sm:pb-0 w-full">
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in-up [animation-delay:400ms] w-full sm:w-auto">
             <Link 
               href="#genesis" 
@@ -204,12 +191,6 @@ export default function Home() {
               Designed by DigiMate Corp. <br className="sm:hidden"/> • © 2052 Broken City
             </p>
           </div>
-        </div>
-        
-        {/* Mobile Background Image - Optimized */}
-        <div className="lg:hidden absolute inset-0 z-0">
-          <Image src="/assets/hero_v2.png" alt="Hero Bg" fill className="object-cover opacity-25 grayscale brightness-50" />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-transparent to-dark"></div>
         </div>
       </section>
 
