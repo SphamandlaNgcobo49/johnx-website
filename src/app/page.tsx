@@ -48,29 +48,29 @@ function Navigation({ mobileMenuOpen, setMobileMenuOpen }: { mobileMenuOpen: boo
         </Link>
         
         <div className="flex items-center gap-2 sm:gap-6">
-          <Link href="/shop/tshirts" className="font-syncopate text-[8px] tracking-[0.2em] text-ivory/60 hover:text-champagne transition-colors uppercase pr-4 border-r border-white/10">SHOP</Link>
+          <Link href="/shop/tshirts" className={`font-syncopate text-[8px] tracking-[0.2em] transition-colors uppercase pr-4 border-r ${mobileMenuOpen ? "text-black/60 border-black/10 hover:text-black" : "text-ivory/60 border-white/10 hover:text-champagne"}`}>SHOP</Link>
           
           {/* Hamburger Toggle at the far right */}
           <button 
-            className="text-ivory z-50 p-3 group relative"
+            className="z-50 p-3 group relative"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Menu"
           >
             <div className="w-6 h-3.5 flex flex-col justify-between items-end">
-              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 rotate-45 translate-y-1.5" : "w-6 group-hover:w-4"}`}></span>
-              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "opacity-0" : "w-6"}`}></span>
-              <span className={`h-0.5 bg-ivory transition-all duration-500 ${mobileMenuOpen ? "w-6 -rotate-45 -translate-y-1.5" : "w-6 group-hover:w-5"}`}></span>
+              <span className={`h-0.5 transition-all duration-500 ${mobileMenuOpen ? "w-6 rotate-45 translate-y-1.5 bg-black" : "w-6 group-hover:w-4 bg-ivory"}`}></span>
+              <span className={`h-0.5 transition-all duration-500 ${mobileMenuOpen ? "opacity-0 bg-black" : "w-6 bg-ivory"}`}></span>
+              <span className={`h-0.5 transition-all duration-500 ${mobileMenuOpen ? "w-6 -rotate-45 -translate-y-1.5 bg-black" : "w-6 group-hover:w-5 bg-ivory"}`}></span>
             </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay - Fullscreen Immersive */}
-      <div className={`fixed inset-0 bg-dark z-[90] transition-all duration-1000 ease-luxury md:hidden flex flex-col ${mobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
+      {/* Mobile Menu Overlay - High Contrast White */}
+      <div className={`fixed inset-0 bg-white z-[90] transition-all duration-1000 ease-luxury md:hidden flex flex-col ${mobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
         <div className="flex flex-col items-center justify-center h-full gap-8 text-center p-12">
-          <span className="font-syncopate tracking-[0.8em] text-[8px] uppercase opacity-20 mb-12">Project John X</span>
+          <span className="font-syncopate tracking-[0.8em] text-[8px] uppercase text-black/20 mb-12">Project John X</span>
           
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 text-black">
             {[
               { id: "genesis", label: "The Genesis" },
               { id: "cast", label: "The Cast" },
@@ -89,14 +89,14 @@ function Navigation({ mobileMenuOpen, setMobileMenuOpen }: { mobileMenuOpen: boo
             ))}
           </div>
 
-          <div className="w-24 h-px bg-white/10 my-12"></div>
+          <div className="w-24 h-px bg-black/10 my-12"></div>
           
           <div className={`flex flex-col gap-8 transition-all duration-1000 delay-500 ${mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
-            <Link href="/shop/mp3" className="font-syncopate text-xs tracking-[0.4em] text-champagne uppercase" onClick={() => setMobileMenuOpen(false)}>Sonic Archives</Link>
-            <Link href="/shop/tshirts" className="font-syncopate text-xs tracking-[0.4em] text-champagne uppercase" onClick={() => setMobileMenuOpen(false)}>Wearable Covenant</Link>
+            <Link href="/shop/mp3" className="font-syncopate text-xs tracking-[0.4em] text-black hover:text-champagne transition-colors uppercase" onClick={() => setMobileMenuOpen(false)}>Sonic Archives</Link>
+            <Link href="/shop/tshirts" className="font-syncopate text-xs tracking-[0.4em] text-black hover:text-champagne transition-colors uppercase" onClick={() => setMobileMenuOpen(false)}>Wearable Covenant</Link>
           </div>
 
-          <div className="absolute bottom-20 flex gap-8 opacity-20 font-syncopate text-[8px] tracking-widest uppercase">
+          <div className="absolute bottom-20 flex gap-8 text-black/20 font-syncopate text-[8px] tracking-widest uppercase">
              <span>Instagram</span>
              <span>Twitter</span>
              <span>Contact</span>
